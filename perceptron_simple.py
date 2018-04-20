@@ -1,4 +1,5 @@
 import numpy as np
+import random
 # PATRONES
 a1 = [2, 1]
 a2 = [0, -1]
@@ -24,13 +25,21 @@ print("VALOR ESPERADO")
 print(valor_esperado)
 #ARREGLO DE LA MATRIZ "ALEATORIA"
 alpha=1
-vector_pesos=[0.5,-0.7,0.2]
+value=0
+vector_pesos=[]
+##matriz de pesos aleatoria
+for x in range(len(entradas_vias[0])):
+    value=random.uniform(-10,10)
+    vector_pesos.append(value)
+#vector_pesos=[0.5,-0.7,0.2]
 matriz_pesos=np.array(vector_pesos).reshape(len(entradas_vias[0]),1)
 salida=0
 salida_final=0
 correcto=False
 i=0
 errores=[]
+print("MATRIZ DE PESOS INICIAL")
+print(matriz_pesos)
 while(correcto!=True):
     for j in range(len(entradas_vias[i])):
             salida=entradas_vias[i][j]*vector_pesos[j]
@@ -44,7 +53,7 @@ while(correcto!=True):
     if (error==0):
         errores.append(error)
         if(i==len(entradas_vias)-1):
-            print("MATRIZ PESOS")
+            print("MATRIZ PESOS FINAL")
             print(matriz_pesos)
             print("Errores")
             print(errores)
